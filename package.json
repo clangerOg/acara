@@ -12,7 +12,8 @@
     "dev": "next dev",
     "postinstall": "prisma generate",
     "lint": "next lint",
-    "start": "next start"
+    "start": "next start",
+    "prepare": "husky"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
@@ -32,6 +33,8 @@
     "zod": "^3.23.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
@@ -40,6 +43,7 @@
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.4",
+    "husky": "^9.1.0",
     "postcss": "^8.4.39",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.6.5",
