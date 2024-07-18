@@ -20,7 +20,9 @@ export default {
         background: colors.white,
         "muted-foreground": colors.zinc[500],
         muted: colors.zinc[400],
-        primary: colors.blue,
+        accent: colors.blue,
+        ring: colors.blue[500],
+        primary: colors.zinc,
         border: colors.zinc[200],
       },
       fontFamily: {
