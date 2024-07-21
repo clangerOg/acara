@@ -1,37 +1,33 @@
 import { auth } from "@/auth";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { HydrateClient } from "@/trpc/server";
+import { AccountAvatar } from "@/components/account-avatar";
+import { Sidebar } from "@/components/sidebar";
+import { api } from "@/trpc/server";
 
-export default async function HelloWorld() {
+export default async function DashboardPage() {
   const session = await auth();
 
   if (!session) {
-    return <p>No session found.</p>;
+    return <p>No Session found</p>;
   }
 
-  const { user } = session;
+  const user = await api.user.getById({
+    id: session.user.id,
+  });
+
+  if (!user) {
+    return <p>User not found</p>;
+  }
 
   return (
-    <HydrateClient>
-      <main>
-        <div className="container py-32">
-          <p className="text-3xl font-semibold text-foreground">Hello World</p>
-          <p>{JSON.stringify(user)}</p>
-
-          <Avatar size={"small"}>
-            <AvatarImage
-              src={
-                user.image ??
-                "https://avatars.githubusercontent.com/u/135615964?v=4"
-              }
-              alt={`Profile pricture for ${user.name}`}
-            />
-            <AvatarFallback>
-              <p>{user.name?.charAt(0).toUpperCase()}</p>
-            </AvatarFallback>
-          </Avatar>
+    <main className="h-screen w-screen flex flex-col">
+      <nav className="w-full border-b border-border">
+        <div className="px-12 h-12 flex justify-end items-center">
+          <AccountAvatar user={user} />
         </div>
-      </main>
-    </HydrateClient>
+      </nav>
+      <div className="w-full flex justify-start items-start h-full">
+        <Sidebar />
+      </div>
+    </main>
   );
 }

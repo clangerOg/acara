@@ -1,4 +1,3 @@
-import { SignInForm } from "@/components/forms/sign-in-form";
 import { CalendarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -22,8 +21,6 @@ export default async function SingInPage() {
               Sign up here
             </Link>
           </p>
-
-          <SignInForm />
         </div>
       </div>
       <div className="w-full h-full bg-gradient-to-tr from-accent-200 to-accent-50 relative">

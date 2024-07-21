@@ -26,7 +26,13 @@ export default {
         border: colors.zinc[200],
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", ...fontFamily.sans],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+      },
+      boxShadow: {
+        "btn-default":
+          "inset 0 1px 1px rgba(255, 255, 255, 0.2), 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "btn-outline":
+          "inset 0 1px 1px rgba(0, 0, 0, 0.2), 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
       },
     },
   },

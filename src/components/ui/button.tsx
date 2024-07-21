@@ -5,20 +5,24 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "transition-colors text-sm font-medium focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:outline-none focus-visible:ring-offset-2 inline-flex justify-center items-center gap-2.5",
+  "border font-medium rounded-lg disabled:opacity-70 transition-colors focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none inline-flex justify-center items-center gap-2.5 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "",
-        destructive: "",
+        default:
+          "bg-zinc-800 text-white border-zinc-950 shadow-btn-default hover:bg-zinc-700 hover:border-zinc-800 [&_svg]:text-zinc-300",
+        destructive:
+          "bg-red-500 text-white border-red-700 shadow-btn-default hover:bg-red-400 hover:border-red-600 focus-visible:ring-red-500 [&_svg]:text-red-100",
+        success:
+          "bg-green-500 text-white border-green-700 shadow-btn-default hover:bg-green-400 hover:border-green-600 focus-visible:ring-green-500 [&_svg]:text-green-100",
         outline:
-          "border border-border bg-background hover:bg-primary-50 shadow-sm",
-        secondary: "",
-        ghost: "",
-        link: "",
+          "bg-transparent text-foreground border-border shadow-md hover:bg-zinc-100 hover:border-zinc-300 [&_svg]:text-zinc-500",
+        ghost:
+          "bg-transparent text-foreground hover:bg-zinc-100 [&_svg]:text-zinc-500 border-none",
       },
       size: {
-        default: "h-9 px-3 py-1.5 rounded-lg",
+        small: "text-sm px-2 py-1 h-8",
+        default: "text-sm px-3 py-1.5 h-9",
       },
     },
     defaultVariants: {

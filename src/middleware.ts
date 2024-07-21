@@ -39,8 +39,6 @@ export default auth(async function middleware(req) {
   if (nextUrl.pathname === "/") {
     return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
   }
-
-  return;
 });
 
 export const config: MiddlewareConfig = {
