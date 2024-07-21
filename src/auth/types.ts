@@ -1,7 +1,7 @@
 // The `JWT` interface can be found in the `next-auth/jwt` submodule
-import type { UserRole } from "@prisma/client";
-import type { DefaultSession } from "next-auth";
-import "next-auth/jwt";
+import type { UserRole } from "@prisma/client"
+import type { DefaultSession } from "next-auth"
+import "next-auth/jwt"
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -12,9 +12,9 @@ import "next-auth/jwt";
 declare module "next-auth" {
   interface Session extends DefaultSession {
     user: {
-      id: string;
-      role: UserRole;
-    } & DefaultSession["user"];
+      id: string
+      role: UserRole
+    } & DefaultSession["user"]
   }
 }
 
@@ -22,7 +22,7 @@ declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
   interface JWT {
     /** OpenID ID Token */
-    idToken?: string;
-    role: UserRole;
+    idToken?: string
+    role: UserRole
   }
 }

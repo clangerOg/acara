@@ -1,4 +1,4 @@
-import { z } from "zod";
+import { z } from "zod"
 
 export const createEventSchema = z.object({
   name: z.string().min(3, {
@@ -15,4 +15,4 @@ export const createEventSchema = z.object({
     message: "Capacity must be at least 1",
   }),
   draft: z.boolean(),
-});
+})

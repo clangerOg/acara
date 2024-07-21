@@ -1,5 +1,5 @@
-import { cn } from "@/lib/utils";
-import React from "react";
+import { cn } from "@/lib/utils"
+import React from "react"
 
 const PageHeaderTitle = React.forwardRef<
   HTMLHeadingElement,
@@ -9,13 +9,13 @@ const PageHeaderTitle = React.forwardRef<
     <h1
       ref={ref}
       {...rest}
-      className={cn("text-2xl font-medium text-foreground relative", className)}
+      className={cn("relative text-2xl font-medium text-foreground", className)}
     >
-      <span className="block h-[70%] w-1 bg-foreground absolute -left-8 top-1/2 -translate-y-1/2 transform" />
+      <span className="absolute -left-8 top-1/2 block h-[70%] w-1 -translate-y-1/2 transform bg-foreground" />
       {children}
     </h1>
-  );
-});
-PageHeaderTitle.displayName = "PageHeaderTitle";
+  )
+})
+PageHeaderTitle.displayName = "PageHeaderTitle"
 
-export { PageHeaderTitle };
+export { PageHeaderTitle }

@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import {
   Form,
@@ -8,29 +8,29 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
-import { cn } from "@/lib/utils";
-import { createEventSchema } from "@/server/schemas";
-import { api } from "@/trpc/react";
-import { CalendarIcon, CheckIcon, XMarkIcon } from "@heroicons/react/16/solid";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { useRouter } from "next/navigation";
-import React from "react";
-import { useForm } from "react-hook-form";
-import type { z } from "zod";
-import { Button } from "../ui/button";
-import { Calendar } from "../ui/calendar";
-import { Checkbox } from "../ui/checkbox";
-import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
-import { Textarea } from "../ui/textarea";
-import { TimePicker } from "../ui/time-picker";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { useToast } from "@/hooks/use-toast"
+import { cn } from "@/lib/utils"
+import { createEventSchema } from "@/server/schemas"
+import { api } from "@/trpc/react"
+import { CalendarIcon, CheckIcon, XMarkIcon } from "@heroicons/react/16/solid"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { format } from "date-fns"
+import { useRouter } from "next/navigation"
+import React from "react"
+import { useForm } from "react-hook-form"
+import type { z } from "zod"
+import { Button } from "../ui/button"
+import { Calendar } from "../ui/calendar"
+import { Checkbox } from "../ui/checkbox"
+import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover"
+import { Textarea } from "../ui/textarea"
+import { TimePicker } from "../ui/time-picker"
 
 function CreateEventForm() {
-  const [loading, setLoading] = React.useState(false);
-  const { toast } = useToast();
+  const [loading, setLoading] = React.useState(false)
+  const { toast } = useToast()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof createEventSchema>>({
@@ -46,39 +46,39 @@ function CreateEventForm() {
       image:
         "https://products.ls.graphics/mesh-gradients/images/12.-Tumbleweed_1.jpg",
     },
-  });
+  })
 
-  const router = useRouter();
+  const router = useRouter()
 
   // TODO: Display error messages.
   const createEvent = api.event.create.useMutation({
     onSuccess({ id }) {
-      setLoading(false);
+      setLoading(false)
       toast({
         title: "Event created successfully.",
         description: "Your event has been created successfully.",
         duration: 2000,
-      });
-      router.push(`/app/events/${id}`);
+      })
+      router.push(`/app/events/${id}`)
     },
     onError(error) {
-      setLoading(false);
+      setLoading(false)
       toast({
         title: "Failed to create event",
         description: error.message ?? "An error unknown occurred.",
-      });
+      })
     },
-  });
+  })
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof createEventSchema>) {
-    setLoading(true);
+    setLoading(true)
 
     createEvent.mutate({
       ...values,
       image:
         "https://products.ls.graphics/mesh-gradients/images/12.-Tumbleweed_1.jpg",
-    });
+    })
   }
 
   return (
@@ -89,7 +89,7 @@ function CreateEventForm() {
           disabled={loading}
           name="name"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-1 md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>Name</FormLabel>
                 <FormDescription>
@@ -115,11 +115,11 @@ function CreateEventForm() {
           disabled={loading}
           name="description"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>
                   Description
-                  <span className="font-normal text-muted-foreground ms-2">
+                  <span className="ms-2 font-normal text-muted-foreground">
                     Optional
                   </span>
                 </FormLabel>
@@ -146,7 +146,7 @@ function CreateEventForm() {
           disabled={loading}
           name="location"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>Location</FormLabel>
                 <FormDescription>
@@ -172,7 +172,7 @@ function CreateEventForm() {
           disabled={loading}
           name="capacity"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>Capacity</FormLabel>
                 <FormDescription>
@@ -198,7 +198,7 @@ function CreateEventForm() {
           disabled={loading}
           name="startDate"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>Start Date</FormLabel>
                 <FormDescription>
@@ -214,7 +214,7 @@ function CreateEventForm() {
                         disabled={loading}
                         className={cn(
                           "w-full justify-start text-left font-normal shadow-sm",
-                          !field.value && "text-muted-foreground",
+                          !field.value && "text-muted-foreground"
                         )}
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
@@ -233,7 +233,7 @@ function CreateEventForm() {
                       onSelect={field.onChange}
                       initialFocus
                     />
-                    <div className="p-3 border-t border-border">
+                    <div className="border-t border-border p-3">
                       <TimePicker setDate={field.onChange} date={field.value} />
                     </div>
                   </PopoverContent>
@@ -248,7 +248,7 @@ function CreateEventForm() {
           disabled={loading}
           name="endDate"
           render={({ field }) => (
-            <FormItem className="grid grid-cols-2 gap-8 py-12 first:pt-0 border-b border-border last:border-none">
+            <FormItem className="grid grid-cols-1 gap-8 border-b border-border py-12 first:pt-0 last:border-none md:grid-cols-2">
               <div className="space-y-1">
                 <FormLabel>End Date</FormLabel>
                 <FormDescription>
@@ -264,7 +264,7 @@ function CreateEventForm() {
                         disabled={loading}
                         className={cn(
                           "w-full justify-start text-left font-normal shadow-sm",
-                          !field.value && "text-muted-foreground",
+                          !field.value && "text-muted-foreground"
                         )}
                       >
                         <CalendarIcon className="mr-2 h-4 w-4" />
@@ -283,7 +283,7 @@ function CreateEventForm() {
                       onSelect={field.onChange}
                       initialFocus
                     />
-                    <div className="p-3 border-t border-border">
+                    <div className="border-t border-border p-3">
                       <TimePicker setDate={field.onChange} date={field.value} />
                     </div>
                   </PopoverContent>
@@ -298,7 +298,7 @@ function CreateEventForm() {
           disabled={loading}
           name="draft"
           render={({ field }) => (
-            <FormItem className="py-12 first:pt-0 border-b border-border last:border-none flex justify-start items-start gap-3">
+            <FormItem className="flex items-start justify-start gap-3 border-b border-border py-12 first:pt-0 last:border-none">
               <FormControl>
                 <Checkbox
                   disabled={field.disabled}
@@ -318,7 +318,7 @@ function CreateEventForm() {
             </FormItem>
           )}
         />
-        <div className="pt-10 flex justify-end items-center gap-3">
+        <div className="flex items-center justify-end gap-3 pt-10">
           <Button
             disabled={loading}
             variant={"destructive"}
@@ -335,8 +335,8 @@ function CreateEventForm() {
           >
             <span
               className={cn(
-                "opacity-100 inline-flex gap-2.5 justify-center items-center",
-                loading && "opacity-0",
+                "inline-flex items-center justify-center gap-2.5 opacity-100",
+                loading && "opacity-0"
               )}
             >
               Create event
@@ -346,13 +346,13 @@ function CreateEventForm() {
             <div
               role="status"
               className={cn(
-                "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block",
-                !loading && "hidden",
+                "absolute left-1/2 top-1/2 block -translate-x-1/2 -translate-y-1/2",
+                !loading && "hidden"
               )}
             >
               <svg
                 aria-hidden="true"
-                className="inline w-4 h-4 text-zinc-200 animate-spin dark:text-zinc-600 fill-zinc-800"
+                className="inline h-4 w-4 animate-spin fill-zinc-800 text-zinc-200 dark:text-zinc-600"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -372,8 +372,8 @@ function CreateEventForm() {
         </div>
       </form>
     </Form>
-  );
+  )
 }
-CreateEventForm.displayName = "CreateEventForm";
+CreateEventForm.displayName = "CreateEventForm"
 
-export { CreateEventForm };
+export { CreateEventForm }

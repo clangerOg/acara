@@ -1,15 +1,15 @@
-import { PageHeaderTitle } from "@/components/page-header";
+import { PageHeaderTitle } from "@/components/page-header"
 
 export default async function DashboardPage() {
   return (
     <div className="container py-12">
       <PageHeaderTitle>Dashboard</PageHeaderTitle>
-      <button className="bg-transparent text-foreground text-sm font-medium border border-border rounded-lg px-3 py-1.5 shadow-sm transition-colors hover:bg-zinc-100 hover:border-zinc-300 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none h-9">
+      <button className="h-9 rounded-lg border border-border bg-transparent px-3 py-1.5 text-sm font-medium text-foreground shadow-sm transition-colors hover:border-zinc-300 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
         <span>Click me</span>
       </button>
-      <button className="bg-zinc-800 text-white text-sm font-medium border border-zinc-950 rounded-lg px-3 py-1.5 shadow-btn-default transition-colors hover:bg-zinc-700 hover:border-zinc-800 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:outline-none h-9">
+      <button className="h-9 rounded-lg border border-zinc-950 bg-zinc-800 px-3 py-1.5 text-sm font-medium text-white shadow-btn-default transition-colors hover:border-zinc-800 hover:bg-zinc-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
         <span>Click me</span>
       </button>
     </div>
-  );
+  )
 }

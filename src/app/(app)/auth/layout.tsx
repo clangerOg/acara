@@ -1,5 +1,5 @@
-import { AcaraLabel } from "@/components/acara-label";
-import React from "react";
+import { AcaraLabel } from "@/components/acara-label"
+import React from "react"
 
 export default async function AuthLayout({
   children,
@@ -7,7 +7,7 @@ export default async function AuthLayout({
   return (
     <main>
       {children}
-      <AcaraLabel className="absolute top-8 left-8" />
+      <AcaraLabel className="absolute left-8 top-8" />
     </main>
-  );
+  )
 }

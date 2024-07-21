@@ -3,10 +3,10 @@ import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
-} from "@/server/api/trpc";
-import { db } from "@/server/db";
-import { createEventSchema } from "@/server/schemas";
-import { z } from "zod";
+} from "@/server/api/trpc"
+import { db } from "@/server/db"
+import { createEventSchema } from "@/server/schemas"
+import { z } from "zod"
 
 export const eventRouter = createTRPCRouter({
   getById: publicProcedure
@@ -16,14 +16,14 @@ export const eventRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
-      });
+      })
 
-      return res;
+      return res
     }),
   create: adminProcedure
     .input(createEventSchema)
     .mutation(async ({ ctx, input }) => {
-      const userId = ctx.session.user.id;
+      const userId = ctx.session.user.id
 
       const res = await db.event.create({
         data: {
@@ -35,13 +35,13 @@ export const eventRouter = createTRPCRouter({
           end: input.endDate,
           creatorId: userId,
         },
-      });
+      })
 
-      return res;
+      return res
     }),
   getAll: protectedProcedure.query(async () => {
-    const res = await db.event.findMany();
+    const res = await db.event.findMany()
 
-    return res;
+    return res
   }),
-});
+})

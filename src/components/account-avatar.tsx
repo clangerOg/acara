@@ -1,17 +1,17 @@
-import type { User } from "@prisma/client";
-import { LogOutIcon } from "lucide-react";
-import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Button } from "./ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import type { User } from "@prisma/client"
+import { LogOutIcon } from "lucide-react"
+import React from "react"
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
+import { Button } from "./ui/button"
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover"
 
 interface AccountAvatarProps {
-  user: User;
+  user: User
 }
 const AccountAvatar: React.FC<AccountAvatarProps> = ({ user }) => {
   return (
     <Popover>
-      <PopoverTrigger className="rounded-full focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-ring focus-visible:outline-none transition-all">
+      <PopoverTrigger className="rounded-full transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background">
         <Avatar size={"small"}>
           {/* TODO: Replace Fallback Image Source with source from config file */}
           <AvatarImage
@@ -27,8 +27,8 @@ const AccountAvatar: React.FC<AccountAvatarProps> = ({ user }) => {
         </Avatar>
       </PopoverTrigger>
       <PopoverContent collisionPadding={32}>
-        <div className="flex justify-start items-start gap-4">
-          <Avatar className="size-8 mt-0.5 border-none">
+        <div className="flex items-start justify-start gap-4">
+          <Avatar className="mt-0.5 size-8 border-none">
             {/* TODO: Replace Fallback Image Source with source from config file */}
             <AvatarImage
               src={
@@ -45,7 +45,7 @@ const AccountAvatar: React.FC<AccountAvatarProps> = ({ user }) => {
             <p className="text-sm font-medium text-foreground">{user.name}</p>
             <p className="text-sm text-muted-foreground">{user.email}</p>
 
-            <Button size="small" className="w-full mt-6" variant="outline">
+            <Button size="small" className="mt-6 w-full" variant="outline">
               Sign Out
               <LogOutIcon className="size-3.5 text-muted-foreground" />
             </Button>
@@ -53,8 +53,8 @@ const AccountAvatar: React.FC<AccountAvatarProps> = ({ user }) => {
         </div>
       </PopoverContent>
     </Popover>
-  );
-};
-AccountAvatar.displayName = "AccountAvatar";
+  )
+}
+AccountAvatar.displayName = "AccountAvatar"
 
-export { AccountAvatar };
+export { AccountAvatar }

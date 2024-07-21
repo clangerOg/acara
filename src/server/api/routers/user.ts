@@ -1,7 +1,7 @@
-import { z } from "zod";
+import { z } from "zod"
 
-import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
-import { db } from "@/server/db";
+import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc"
+import { db } from "@/server/db"
 
 export const userRouter = createTRPCRouter({
   getById: protectedProcedure
@@ -11,14 +11,14 @@ export const userRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
-      });
+      })
 
       if (!user) {
         // TODO: Improve error handling
-        console.log("User not found");
-        return null;
+        console.log("User not found")
+        return null
       }
 
-      return user;
+      return user
     }),
-});
+})
